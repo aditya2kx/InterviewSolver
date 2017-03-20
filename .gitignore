@@ -1,0 +1,15 @@
+.git
+*/.git
+*.idea
+*.releaseBackup
+*.versionsBackup
+*.class
+*.iml
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.old
+*.class
+
