@@ -10,6 +10,15 @@ import java.util.stream.Collectors;
  * Created by adi2ky on 8/27/17.
  */
 public class BFS<T> {
+
+    /**
+     * Approach: Basically, keeps track of visited vertices and
+     * does not traverse them again. Apart from that its simple BFS
+     * similar to a BFS for a Tree.
+     *
+     * Time Complexity : O(Vertex + Edge)
+     * Storage Capacity : O(Vertex)
+     */
     public List<T> traverseGraph(Graph<T> graph, T startVertex) {
         HashSet<T> visitedVertexSet = new HashSet<>();
         LinkedList<T> toBeTraversedVertexList = new LinkedList<>();

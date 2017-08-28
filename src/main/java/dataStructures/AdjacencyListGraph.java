@@ -7,6 +7,11 @@ import java.util.Map;
 
 /**
  * Created by adi2ky on 8/27/17.
+ *
+ * This data structure represents a directed graph
+ * supporting loops but not multiple edges.
+ *
+ * Storage Capacity : O(Vertex + Edge)
  */
 public class AdjacencyListGraph<T> implements Graph<T> {
     private Map<T, LinkedList<T>> vertexMap;
@@ -15,6 +20,9 @@ public class AdjacencyListGraph<T> implements Graph<T> {
         vertexMap = new HashMap<>();
     }
 
+    /*
+     * Time Complexity : O(1)
+     */
     @Override
     public void addEdge(T vertex1, T vertex2) {
         if (vertexMap.containsKey(vertex1) && vertexMap.containsKey(vertex2)) {
@@ -22,11 +30,17 @@ public class AdjacencyListGraph<T> implements Graph<T> {
         }
     }
 
+    /*
+     * Time Complexity : O(1)
+     */
     @Override
     public void addVertex(T vertex) {
         vertexMap.put(vertex, new LinkedList<T>());
     }
 
+    /*
+     * Time Complexity : O(1)
+     */
     @Override
     public List<T> getNeighbours(T vertex) {
         return vertexMap.get(vertex);
