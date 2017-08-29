@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 /**
  * Created by adi2ky on 8/27/17.
  */
-public class BFS<T> {
+public class BFS<T> implements TraversalSearch<T> {
 
     /**
      * Approach: Basically, keeps track of visited vertices and
@@ -19,6 +19,7 @@ public class BFS<T> {
      * Time Complexity : O(Vertex + Edge)
      * Storage Capacity : O(Vertex)
      */
+    @Override
     public List<T> traverseGraph(Graph<T> graph, T startVertex) {
         HashSet<T> visitedVertexSet = new HashSet<>();
         LinkedList<T> toBeTraversedVertexList = new LinkedList<>();
