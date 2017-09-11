@@ -3,6 +3,7 @@ import dataStructures.Graph;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import traversal.graph.DFS;
 
 import java.util.Arrays;
 import java.util.List;
