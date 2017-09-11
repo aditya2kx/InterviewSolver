@@ -1,3 +1,5 @@
+package traversal.graph;
+
 import dataStructures.Graph;
 
 import java.util.ArrayList;
@@ -9,7 +11,7 @@ import java.util.stream.Collectors;
 /**
  * Created by adi2ky on 8/27/17.
  */
-public class BFS<T> implements TraversalSearch<T> {
+public class BFS<T> implements GraphTraversal<T> {
 
     /**
      * Approach: Basically, keeps track of visited vertices and

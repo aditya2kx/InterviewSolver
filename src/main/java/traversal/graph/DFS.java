@@ -1,3 +1,5 @@
+package traversal.graph;
+
 import dataStructures.Graph;
 import org.apache.commons.collections4.CollectionUtils;
 
@@ -10,7 +12,7 @@ import java.util.stream.Collectors;
 /**
  * Created by adi2ky on 8/28/17.
  */
-public class DFS<T> implements TraversalSearch<T> {
+public class DFS<T> implements GraphTraversal<T> {
     /**
      * Approach: Basically, keeps track of visited vertices and
      * does not traverse them again. Apart from that its simple DFS

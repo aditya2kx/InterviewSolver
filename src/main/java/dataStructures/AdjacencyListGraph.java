@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by adi2ky on 8/27/17.
@@ -24,18 +25,20 @@ public class AdjacencyListGraph<T> implements Graph<T> {
      * Time Complexity : O(1)
      */
     @Override
-    public void addEdge(T vertex1, T vertex2) {
+    public AdjacencyListGraph<T> addEdge(T vertex1, T vertex2) {
         if (vertexMap.containsKey(vertex1) && vertexMap.containsKey(vertex2)) {
             vertexMap.get(vertex1).add(vertex2);
         }
+        return this;
     }
 
     /*
      * Time Complexity : O(1)
      */
     @Override
-    public void addVertex(T vertex) {
+    public AdjacencyListGraph<T> addVertex(T vertex) {
         vertexMap.put(vertex, new LinkedList<T>());
+        return this;
     }
 
     /*
@@ -44,5 +47,10 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     @Override
     public List<T> getNeighbours(T vertex) {
         return vertexMap.get(vertex);
+    }
+
+    @Override
+    public Set<T> getVertices() {
+        return vertexMap.keySet();
     }
 }
