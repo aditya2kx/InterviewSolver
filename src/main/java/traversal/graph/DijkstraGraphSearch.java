@@ -46,14 +46,23 @@ public class DijkstraGraphSearch<T> implements GraphTraversal<T> {
         return shortestDistanceMap;
     }
 
+    /**
+     * Approach: Uses Priority Queue to keep track of unvisited vertices.
+     * The time complexity of extract minimum element from Priority Queue is O(log N)
+     * and the time to traverse all vertices in a adjacency list backed Graph is
+     * O(V + E).
+     * Time Complexity : O(E Log V)
+     * Storage Capacity : O(Vertex)
+     */
     public Map<T, Integer> findShortestDistancePQ(Graph<T> graph, T startVertex) {
         Map<T, Integer> shortestDistanceMap = new HashMap<>();
         Map<T, Integer> unvisitedNodeMap = graph.getVertices()
                 .stream()
-                .filter(unvisitedVertex -> unvisitedVertex != startVertex)
                 .collect(Collectors.toMap(Function.identity(), unvisitedVertex -> Integer.MAX_VALUE));
+
         shortestDistanceMap.put(startVertex, 0);
         unvisitedNodeMap.put(startVertex, 0);
+
         PriorityQueue<Map.Entry<T, Integer>> unvisitedNodePriorityQueue = new PriorityQueue<>(Comparator.comparing
                 (Map.Entry<T, Integer>::getValue));
         unvisitedNodePriorityQueue.addAll(unvisitedNodeMap.entrySet());
@@ -70,9 +79,14 @@ public class DijkstraGraphSearch<T> implements GraphTraversal<T> {
                             neighbourVertex -> (shortestDistanceMap.get(closestVertex) +
                                     graph.getEdgeWeight(closestVertex, neighbourVertex))));
             updatedNeighbourVertexMap.entrySet()
-                    .forEach(updatedNeighbourVertex -> {
-                        unvisitedNodePriorityQueue.remove(unvisitedNodeMap.)
-                                //decreaseKey. Make your own PQ
+                    .forEach(updatedNeighbourVertexEntry -> {
+                        /* Todo(adi2ky) Have custom implementation of Priority Q, with O(log N)
+                         * runtime for removal of an element.
+                         * Java's implementation for Priority Queue's removal of element takes  take O(N)
+                         */
+                        unvisitedNodePriorityQueue.remove(updatedNeighbourVertexEntry.getKey());
+                        unvisitedNodePriorityQueue.add(updatedNeighbourVertexEntry);
+                        shortestDistanceMap.put(updatedNeighbourVertexEntry.getKey(), updatedNeighbourVertexEntry.getValue());
                     });
         }
 
