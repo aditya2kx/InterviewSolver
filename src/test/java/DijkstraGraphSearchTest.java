@@ -65,4 +65,13 @@ public class DijkstraGraphSearchTest {
     Map<Integer, Integer> actualShortestDistanceMap = dijkstraGraphSearch.findShortestDistance(graph, startVertex);
     assertEquals(actualShortestDistanceMap, expectedShortestDistanceMap);
   }
+
+  @Test(dataProvider = "shortestDistanceSearchDataProvider")
+  public void shortestDistanceSearchPriorityQueueTest(Graph<Integer> graph,
+                                                      Integer startVertex,
+                                                      Map<Integer, Integer> expectedShortestDistanceMap) {
+    DijkstraGraphSearch dijkstraGraphSearch = new DijkstraGraphSearch();
+    Map<Integer, Integer> actualShortestDistanceMap = dijkstraGraphSearch.findShortestDistancePQ(graph, startVertex);
+    assertEquals(actualShortestDistanceMap, expectedShortestDistanceMap);
+  }
 }

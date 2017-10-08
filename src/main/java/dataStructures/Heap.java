@@ -1,8 +1,8 @@
 package dataStructures;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import org.apache.commons.collections4.CollectionUtils;
+
+import java.util.*;
 import java.util.function.BinaryOperator;
 
 public class Heap<T> {
@@ -10,7 +10,7 @@ public class Heap<T> {
     private BinaryOperator<T> heapPropertyFunction;
 
     public Heap(BinaryOperator<T> heapPropertyFunction) {
-        this.dataList = new ArrayList<>();
+        this.dataList = new LinkedList<>();
         this.heapPropertyFunction = heapPropertyFunction;
     }
 
@@ -30,6 +30,21 @@ public class Heap<T> {
         dataList.add(0, value);
         heapify(dataList, 0, dataList.size());
         return this;
+    }
+
+    /**
+     * Time Complexity : O(log(vertex))
+     * Storage Capacity : O(Vertex)
+     */
+    public Optional<T> extractRoot() {
+       if (CollectionUtils.isEmpty(dataList)) {
+           return Optional.empty();
+       }
+
+       Collections.swap(dataList, 0, dataList.size() - 1);
+       T root = dataList.remove(dataList.size() - 1);
+       heapify(dataList, 0 , dataList.size());
+       return Optional.of(root);
     }
 
     /**
